@@ -87,6 +87,44 @@ Now, let's briefly explain the contents of the YAML files provided in the script
 
 4. `04_argocd.yaml`: Defines the ArgoCD configuration in the `policies` namespace.
 
+
+Note:  We are customizing the default ArgoCD Instance which is a supported configuration change.
+
+
+```
+  repo:
+    resources:
+      limits:
+        cpu: '1'
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    env:
+    - name: KUSTOMIZE_PLUGIN_HOME
+      value: /etc/kustomize/plugin
+    initContainers:
+    - args:
+      - cp /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator/PolicyGenerator
+        /policy-generator/PolicyGenerator
+      command:
+      - sh
+      - -c
+      image: registry.redhat.io/rhacm2/multicluster-operators-subscription-rhel8:v2.8.0
+      name: policy-generator-install
+      volumeMounts:
+      - mountPath: /policy-generator
+        name: policy-generator
+    volumeMounts:
+    - mountPath: /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator
+      name: policy-generator
+    volumes:
+    - emptyDir: {}
+      name: policy-generator
+  kustomizeBuildOptions: --enable-alpha-plugins
+```
+
+
 5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet.
 
 6. `06_appproject.yaml`: Sets up an ArgoCD application project.
