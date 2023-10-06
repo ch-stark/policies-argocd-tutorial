@@ -91,6 +91,13 @@ Now, let's briefly explain the contents of the YAML files provided in the script
 
 7. `07_placement.yaml`: Defines placement rules for PolicySets.
 
+
+At the end you will see the deployed policies in RHACM Governance-UI
+
+
+![Alt Text](files/policies.png)
+
+
 ## Conclusion
 
 By following this tutorial and executing the provided script, you've successfully set up ArgoCD to deploy Policies, specifically the OpenShift+ PolicySet. This PolicySet will help you enforce best practices and enhance the security and compliance of your OpenShift cluster. You can further customize and manage your policies through ArgoCD and keep your cluster in a desired state effortlessly. Happy policy management!
