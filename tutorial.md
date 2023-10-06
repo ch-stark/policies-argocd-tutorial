@@ -140,5 +140,4 @@ At the end you will see the deployed policies in RHACM Governance-UI
 
 ## Conclusion
 
-By following this tutorial and executing the provided script, you've successfully set up ArgoCD to deploy Policies. This PolicySet will help you enforce best practices and enhance the security and compliance of your OpenShift cluster. 
-You can further customize and manage your policies through Git and keep your cluster in a desired state effortlessly. Happy policy management!
+By following this tutorial and executing the provided script, you've achieved a rapid, efficient, and proven setup of ArgoCD for deploying Policies. This PolicySet serves as a robust framework to enforce best practices, fortify the security, and ensure compliance within your OpenShift cluster. Leveraging Git, you can effortlessly customize and manage your policies, maintaining your cluster in the desired state with ease. Embrace the power of streamlined policy management!
