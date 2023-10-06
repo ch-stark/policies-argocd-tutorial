@@ -4,6 +4,8 @@ In this tutorial, we will guide you through the process of setting up ArgoCD to 
 
 Please note that the following approach can be seen as a best practise and can be highly recommended.
 
+The whole setup will last only last a few minutes, so please try it out!
+
 ## Prerequisites
 
 Before we dive into the tutorial, ensure you have the following prerequisites in place:
@@ -125,7 +127,24 @@ Note:  We are customizing the default ArgoCD Instance which is a supported confi
 ```
 
 
-5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet.
+5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet. It points to the ocp-best-practices-policyset.
+
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: policies
+  namespace: policies
+spec:
+  destination:
+    namespace: policies
+    server: https://kubernetes.default.svc
+  project: policies
+  source:
+    path: policygenerator/policy-sets/community/ocp-best-practices
+    repoURL: https://github.com/open-cluster-manaement/policy-collection
+```
+
 
 6. `06_appproject.yaml`: Sets up an ArgoCD application project.
 
