@@ -3,6 +3,7 @@
 Welcome to this tutorial on configuring ArgoCD to deploy Policies for OpenShift best practices using Red Hat Advanced Cluster Management (RHACM). In this guide, we'll walk you through the steps to set up and manage policies efficiently. This PolicySet will help you configure OpenShift for best practices, enhancing security and ensuring compliance. ArgoCD, a popular GitOps tool, is the perfect choice for managing policies in a Kubernetes environment.
 
 **Note:** This approach is considered a best practice and comes highly recommended.
+**Note:** This will be a list of short tutorials.
 
 The entire setup will take just a few minutes, so let's get started!
 
