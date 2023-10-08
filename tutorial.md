@@ -12,6 +12,7 @@ Before we dive into the tutorial, make sure you have the following prerequisites
 
 1. Access to a OpenShift Cluster with RHACM 2.8 installed.
 2. `kubectl` and `oc` command-line tools installed.
+3. download this repository and execute the provided script as kubeadmin
 
 ## Setup
 
