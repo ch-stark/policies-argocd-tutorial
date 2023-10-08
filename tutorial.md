@@ -1,25 +1,25 @@
-# Getting Started with RHACM-Policies using ArgoCD
+# Setting Up RHACM-Policies with ArgoCD for OpenShift Best Practices
 
-In this tutorial, we will guide you through the process of setting up ArgoCD to deploy Policies. This PolicySet will help configure OpenShift for best practices, offering a robust level of hardening and compliance checking. ArgoCD is a popular GitOps tool that enables you to manage Kubernetes resources through Git repositories, making it an excellent choice for managing policies.
+Welcome to this tutorial on configuring ArgoCD to deploy Policies for OpenShift best practices using Red Hat Advanced Cluster Management (RHACM). In this guide, we'll walk you through the steps to set up and manage policies efficiently. This PolicySet will help you configure OpenShift for best practices, enhancing security and ensuring compliance. ArgoCD, a popular GitOps tool, is the perfect choice for managing policies in a Kubernetes environment.
 
-Please note that the following approach can be seen as a best practise and can be highly recommended.
+**Note:** This approach is considered a best practice and comes highly recommended.
 
-The whole setup will last only last a few minutes, so please try it out!
+The entire setup will take just a few minutes, so let's get started!
 
 ## Prerequisites
 
-Before we dive into the tutorial, ensure you have the following prerequisites in place:
+Before we dive into the tutorial, make sure you have the following prerequisites in place:
 
 1. Access to a Kubernetes cluster, preferably OpenShift.
 2. `kubectl` and `oc` command-line tools installed.
 3. Git installed on your local machine.
-4. Clone the [GitHub repository](https://github.com/open-cluster-manaement/policy-collection) containing the PolicySet YAML files.
+4. Clone the [GitHub repository](https://github.com/open-cluster-management/policy-collection) containing the PolicySet YAML files.
 
 ## Setup
 
-To simplify the setup process, we have provided a script that will apply the necessary Kubernetes files to create the required resources. Here's how you can set up ArgoCD for deploying Policies:
+To simplify the setup process, we've provided a script that automates the deployment of necessary Kubernetes resources for you. Here's how you can set up ArgoCD for deploying Policies:
 
-1. Create a new file named `setup-argocd.sh` and paste the following script into it:
+1. Create a new file named `setup-argocd.sh` and paste the provided script into it.
 
 ```bash
 #!/bin/bash
@@ -89,74 +89,16 @@ Now, let's briefly explain the contents of the YAML files provided in the script
 
 4. `04_argocd.yaml`: Defines the ArgoCD configuration in the `policies` namespace.
 
-
-Note:  We are customizing the default ArgoCD Instance which is a supported configuration change.
-
-
-```
-  repo:
-    resources:
-      limits:
-        cpu: '1'
-        memory: 512Mi
-      requests:
-        cpu: 250m
-        memory: 256Mi
-    env:
-    - name: KUSTOMIZE_PLUGIN_HOME
-      value: /etc/kustomize/plugin
-    initContainers:
-    - args:
-      - cp /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator/PolicyGenerator
-        /policy-generator/PolicyGenerator
-      command:
-      - sh
-      - -c
-      image: registry.redhat.io/rhacm2/multicluster-operators-subscription-rhel8:v2.8.0
-      name: policy-generator-install
-      volumeMounts:
-      - mountPath: /policy-generator
-        name: policy-generator
-    volumeMounts:
-    - mountPath: /etc/kustomize/plugin/policy.open-cluster-management.io/v1/policygenerator
-      name: policy-generator
-    volumes:
-    - emptyDir: {}
-      name: policy-generator
-  kustomizeBuildOptions: --enable-alpha-plugins
-```
-
-
-5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet. It points to the ocp-best-practices-policyset.
-
-```
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: policies
-  namespace: policies
-spec:
-  destination:
-    namespace: policies
-    server: https://kubernetes.default.svc
-  project: policies
-  source:
-    path: policygenerator/policy-sets/community/ocp-best-practices
-    repoURL: https://github.com/open-cluster-manaement/policy-collection
-```
-
+5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet, pointing to the `ocp-best-practices-policyset`.
 
 6. `06_appproject.yaml`: Sets up an ArgoCD application project.
 
-7. `07_placement.yaml`: Defines placement-definitions for the Policys.
+7. `07_placement.yaml`: Defines placement-definitions for the Policies.
 
+At the end of the setup, you'll find the deployed policies in the RHACM Governance UI.
 
-At the end you will see the deployed policies in RHACM Governance-UI
-
-
-![Alt Text](files/policies.png)
-
+![Policy Dashboard](files/policies.png)
 
 ## Conclusion
 
-By following this tutorial and executing the provided script, you've achieved a rapid, efficient, and proven setup of ArgoCD for deploying Policies. This PolicySet serves as a robust framework to enforce best practices, fortify the security, and ensure compliance within your OpenShift cluster. Leveraging Git, you can effortlessly customize and manage your policies, maintaining your cluster in the desired state with ease. Embrace the power of streamlined policy management!
+By following this tutorial and executing the provided script, you've efficiently set up ArgoCD for deploying Policies in your OpenShift cluster. This PolicySet offers a robust framework for enforcing best practices, enhancing security, and ensuring compliance. Utilizing Git, you can easily customize and manage your policies, maintaining your cluster in the desired state. Embrace the power of streamlined policy management with RHACM and ArgoCD!
