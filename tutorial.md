@@ -10,7 +10,7 @@ The entire setup will take just a few minutes, so let's get started!
 
 Before we dive into the tutorial, make sure you have the following prerequisites in place:
 
-1. Access to a Kubernetes cluster, preferably OpenShift.
+1. Access to a OpenShift Cluster with RHACM 2.8 installed.
 2. `kubectl` and `oc` command-line tools installed.
 3. Git installed on your local machine.
 4. Clone the [GitHub repository](https://github.com/open-cluster-management/policy-collection) containing the PolicySet YAML files.
