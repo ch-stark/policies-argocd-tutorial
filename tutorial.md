@@ -11,10 +11,9 @@ The entire setup will take just a few minutes, so let's get started!
 
 Before we dive into the tutorial, make sure you have the following prerequisites in place:
 
-1. Access to a OpenShift Cluster with RHACM 2.8 installed.
+1. Kubeadmin access to a OpenShift Cluster with RHACM 2.8 installed.
 2. `kubectl` and `oc` command-line tools installed.
-3. download this repository and execute the provided script as kubeadmin
-
+3. download this repository and execute the provided script 
 ## Setup
 
 To simplify the setup process, we've provided a script that automates the deployment of necessary Kubernetes resources for you. Here's how you can set up ArgoCD for deploying Policies:
