@@ -12,8 +12,6 @@ Before we dive into the tutorial, make sure you have the following prerequisites
 
 1. Access to a OpenShift Cluster with RHACM 2.8 installed.
 2. `kubectl` and `oc` command-line tools installed.
-3. Git installed on your local machine.
-4. Clone the [GitHub repository](https://github.com/open-cluster-management/policy-collection) containing the PolicySet YAML files.
 
 ## Setup
 
@@ -101,4 +99,4 @@ At the end of the setup, you'll find the deployed policies in the RHACM Governan
 
 ## Conclusion
 
-By following this tutorial and executing the provided script, you've efficiently set up ArgoCD for deploying Policies in your OpenShift cluster. This PolicySet offers a robust framework for enforcing best practices, enhancing security, and ensuring compliance. Utilizing Git, you can easily customize and manage your policies, maintaining your cluster in the desired state. Embrace the power of streamlined policy management with RHACM and ArgoCD!
+By following this tutorial and executing the provided script, you've efficiently set up ArgoCD for deploying Policies in your OpenShift cluster. This PolicySet offers a good start for enforcing best practices, enhancing security, and ensuring compliance. Utilizing Git, you can easily customize and manage your policies, maintaining your cluster in the desired state. Embrace the power of streamlined policy management with RHACM and ArgoCD!
