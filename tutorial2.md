@@ -22,12 +22,11 @@ In this tutorial, we will perform the following tasks:
    - Installation of the Gatekeeper library.
    - Installation of Custom Constraint Templates.
    - Installation of a Custom Constraint.
-   - Policy Templates, which allow checking only Kubernetes Clusters with a certain version.
    - Placement of Gatekeeper files distributed to clusters with specific labels. Gatekeeper Operator and Constraints will be installed on ManagedClusters with the label 'gatekeeper=true.'
 
 ## Central Configuration
 
-All of the configurations discussed in this tutorial are managed in a central file. You can find this file at the following URL:
+All of the configurations discussed in this tutorial are managed though PolicyGenerator. You can find all the options it provides this file at the following URL:
 
 [Policy Generator Plugin Configuration](https://github.com/stolostron/policy-generator-plugin/blob/main/docs/policygenerator-reference.yaml)
 
@@ -48,17 +47,28 @@ Now, let's dive into the step-by-step instructions for deploying ACM Gatekeeper 
 
 to setup the tutorial just execute the folowing files again the RHACM 2.8 Hub-Cluster
 
-``
+```
 oc apply -f files/tutorial2/01_applications.yaml
+```
+
+
+Gatekeeper setup will only be applied to Managed-Clusters with a certain label
+
+```
+        matchExpressions:
+          - {key: gatekeeper, operator: In, values: ["true"]}
+```
+
+```
 oc apply -f files/tutorial2/02_gatekeeper-placement.yaml
-``
+```
 
 
 ## Step 3: Demonstrate Key Features
 
 ### 3.1 Dependency between Policies
 
-- Ensure that there is a clear dependency between your policies to enforce the desired order of execution.
+- We ensure that there is a clear dependency between your policies to enforce the desired order of execution.
 
 ### 3.2 Install Gatekeeper
 
@@ -74,21 +84,17 @@ oc apply -f files/tutorial2/02_gatekeeper-placement.yaml
 
 ### 3.5 Install Gatekeeper Library
 
-- Install the Gatekeeper library 
+- Install the Gatekeeper library to get a rich set of Contraints directly from the official repository. 
 
 ### 3.6 Install Custom Constraint Templates
 
 - Add your custom Constraint Templates to your setup.
 
-### 3.7 Install Custom Constraint
+### 3.7 Install Custom Constraints
 
 - Install custom constraints as needed.
 
-### 3.8 Policy Templates
-
-- Create policy templates to check for specific Kubernetes Cluster versions.
-
-### 3.9 Placement
+### 3.8 Placement
 
 - Distribute Gatekeeper files to clusters with specific labels. Install Gatekeeper Operator and Constraints on ManagedClusters with the label 'gatekeeper=true.'
 
@@ -96,4 +102,4 @@ oc apply -f files/tutorial2/02_gatekeeper-placement.yaml
 
 By following these steps, you will successfully deploy ACM Gatekeeper Integration with ArgoCD. This integration allows you to manage policies effectively and ensure the compliance of your Kubernetes clusters.
 
-Feel free to refer to the central configuration file for more advanced settings and customization options.
+

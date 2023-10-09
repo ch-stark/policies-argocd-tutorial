@@ -27,8 +27,6 @@ The `copyPolicyMetadata` option is used to control whether ArgoCD should ignore 
 copyPolicyMetadata: false
 ```
 
-- **Usage**: If you have policies that are specific to Managed-Cluster namespaces and you want to prevent ArgoCD from syncing them, you can set this option to `false`. This can help improve performance in large deployments by reducing unnecessary policy synchronization.
-
 ### evaluationInterval
 
 The `evaluationInterval` option allows you to configure the evaluation interval for policies. It defines how often policies are evaluated, both for compliant and noncompliant states.
@@ -39,7 +37,7 @@ evaluationInterval:
   noncompliant: 45s
 ```
 
-- **Usage**: This option is crucial for optimizing policy evaluation performance. By specifying shorter intervals for non-critical policies (e.g., `noncompliant: 45s`), you can ensure that they are checked more frequently for compliance, thus improving overall system responsiveness. Critical policies can have longer intervals (e.g., `compliant: 30m`) to reduce the load on the system.
+- **Usage**: This option is crucial for optimizing policy evaluation performance. By specifying shorter intervals for non-critical policies (e.g., `noncompliant: 45s`), you can ensure that they are checked more frequently for compliance, thus improving overall system responsiveness. Noncritical policies can have longer intervals (e.g., `compliant: 30m`) to reduce the load on the system.
 
 ### Kustomize
 
