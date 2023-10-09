@@ -45,6 +45,15 @@ Now, let's dive into the step-by-step instructions for deploying ACM Gatekeeper 
 
 - Create ACM-Policies that wrap your Gatekeeper Policies to establish the integration between ACM and Gatekeeper.
 
+
+to setup the tutorial just execute the folowing files again the RHACM 2.8 Hub-Cluster
+
+``
+oc apply -f files/tutorial2/01_applications.yaml
+oc apply -f files/tutorial2/02_gatekeeper-placement.yaml
+``
+
+
 ## Step 3: Demonstrate Key Features
 
 ### 3.1 Dependency between Policies
@@ -57,7 +66,7 @@ Now, let's dive into the step-by-step instructions for deploying ACM Gatekeeper 
 
 ### 3.3 Configure Gatekeeper Instances
 
-- Configure Gatekeeper instances and exclude specific namespaces if needed.
+- Configure the  Gatekeeper instance and exclude specific namespaces if needed.
 
 ### 3.4 Verify Gatekeeper Status
 
@@ -65,11 +74,11 @@ Now, let's dive into the step-by-step instructions for deploying ACM Gatekeeper 
 
 ### 3.5 Install Gatekeeper Library
 
-- Install the Gatekeeper library to enhance functionality.
+- Install the Gatekeeper library 
 
 ### 3.6 Install Custom Constraint Templates
 
-- Add your custom Constraint Templates to Gatekeeper.
+- Add your custom Constraint Templates to your setup.
 
 ### 3.7 Install Custom Constraint
 
