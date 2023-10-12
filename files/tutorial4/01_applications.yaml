@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: policies
+  name: openshift-plus
   namespace: policies
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: policies
   source:
-    path: policygenerator/policy-sets/community/ocp-best-practices
+    path: policygenerator/policy-sets/stable/openshift-plus
     repoURL: https://github.com/ch-stark/policy-collection
     targetRevision: HEAD
   syncPolicy:
