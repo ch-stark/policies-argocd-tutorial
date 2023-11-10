@@ -96,7 +96,7 @@ Now, let's briefly explain the contents of the YAML files provided in the script
 
 At the end of the setup, you'll find the deployed policies in the RHACM Governance UI.
 
-![Policy Dashboard](files/policies.png)
+![Policy Dashboard](files/tutorial1/policies.png)
 
 ## Conclusion
 
