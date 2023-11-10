@@ -29,8 +29,8 @@ files=(
     "02_managedclustersetbinding.yaml"
     "03_installoperator.yaml"
     "04_argocd.yaml"
-    "05_applications.yaml"
-    "06_appproject.yaml"
+    "05_appproject.yaml"
+    "06_applications.yaml"
     "07_placement.yaml"
 )
 
