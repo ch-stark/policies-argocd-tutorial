@@ -88,9 +88,9 @@ Now, let's briefly explain the contents of the YAML files provided in the script
 
 4. `04_argocd.yaml`: Defines the ArgoCD configuration in the `policies` namespace.
 
-5. `05_applications.yaml`: Configures an ArgoCD application for deploying the PolicySet, pointing to the `ocp-best-practices-policyset`.
+5. `05_appproject.yaml`: Configures an ArgoCD application for deploying the PolicySet, pointing to the `ocp-best-practices-policyset`.
 
-6. `06_appproject.yaml`: Sets up an ArgoCD application project.
+6. `06_applications.yaml`: Sets up an ArgoCD application project.
 
 7. `07_placement.yaml`: Defines placement-definitions for the Policies.
 
